@@ -1,0 +1,33 @@
+# Maven build
+/target/
+
+# Gradle build
+/build/
+/.gradle/
+/out/
+
+# IDE files
+*.iml
+.idea/
+.vscode/
+*.class
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / config
+*.env
+*.properties
+*.yml
+*.yaml
+
+# Package managers
+/node_modules/
+
+# Backup files
+*.swp
+*.bak
