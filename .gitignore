@@ -31,3 +31,9 @@ Thumbs.db
 # Backup files
 *.swp
 *.bak
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
