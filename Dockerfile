@@ -7,7 +7,7 @@ RUN chmod +x ./gradlew
 RUN ./gradlew clean build -x test
 
 # Stage 2: Run the application
-FROM eclipse-temurin:20-jre
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 # Sirf main executable jar ko copy karein (plain jar ko ignore karein)
 COPY --from=build /app/build/libs/*SNAPSHOT*.jar app.jar
