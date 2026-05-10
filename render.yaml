@@ -1,7 +1,7 @@
 services:
   - type: web
     name: shopping-web-be
-    env: java
+    runtime: java
     plan: free
 
     buildCommand: ./gradlew build
