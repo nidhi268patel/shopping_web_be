@@ -20,10 +20,9 @@
 Thumbs.db
 
 # Environment / config
-*.env
-*.properties
-*.yml
-*.yaml
+# *.env
+# *.yml
+# *.yaml
 
 # Package managers
 /node_modules/
