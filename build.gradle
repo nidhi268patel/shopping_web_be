@@ -41,6 +41,9 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+springBoot {
+    mainClass = 'com.example.shopping.ShoppingApplication'
+}
 bootJar {
     archiveFileName = 'app.jar'
 }
