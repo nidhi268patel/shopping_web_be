@@ -1,16 +1,18 @@
 FROM eclipse-temurin:17-jdk AS build
 
 WORKDIR /app
+
 COPY . .
 
 RUN chmod +x ./gradlew
-RUN ./gradlew clean build -x test
+
+RUN ./gradlew clean bootJar -x test
 
 FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
-COPY --from=build /app/build/libs/*SNAPSHOT*.jar app.jar
+COPY --from=build /app/build/libs/app.jar app.jar
 
 EXPOSE 8080
 
