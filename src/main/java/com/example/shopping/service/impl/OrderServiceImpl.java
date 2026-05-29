@@ -12,6 +12,8 @@ import java.util.Set;
 
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -143,7 +145,7 @@ public class OrderServiceImpl implements OrderService {
         	                null
         	        );
     	        }
-    	        
+    	        // send(savedOrder.getId().toString());
     	        return savedOrder;
 		} catch (Exception e) {
 			  throw new RuntimeException(e.getMessage());
@@ -333,5 +335,24 @@ public class OrderServiceImpl implements OrderService {
                     "Invalid transition: " + current + " → " + next
             );
         }
+    }
+    
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
+
+    public void send(String order) {
+
+        kafkaTemplate.send("order-topic", order);
+
+    }
+    
+    @KafkaListener(
+            topics = "order-topic",
+            groupId = "shopping-group"
+    )
+    public void consume(String msg) {
+
+        System.out.println("Received: " + msg);
+
     }
 }
